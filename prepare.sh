@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/usr/bin/bash
 cat <<\EOF > test.sh
-#!/bin/bash
+#!/usr/bin/bash
 echo hello
 EOF
