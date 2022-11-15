@@ -53,7 +53,7 @@ export OCP_INGRESS=$(oc get ingress.config cluster -o jsonpath='{.spec.domain}')
 export MAS_APPWS_COMPONENTS="base=latest,health=latest"
 export MAS_APP_SETTINGS_DEMODATA=true
 export MAS_APP_SETTINGS_PERSISTENT_VOLUMES_FLAG=true
-export MAS_APP_SETTINGS_SERVER_BUNDLES_SIZE=jms
+#export MAS_APP_SETTINGS_SERVER_BUNDLES_SIZE=jms
 #MAS_APP_SETTINGS_SECONDARY_LANGS='FR,IT,DE,ZH-TW'
 ansible-playbook ibm.mas_devops.oneclick_add_manage.yml
 set +e
