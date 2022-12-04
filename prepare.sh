@@ -53,9 +53,10 @@ export OCP_INGRESS=$(oc get ingress.config cluster -o jsonpath='{.spec.domain}')
 export MAS_APPWS_COMPONENTS="base=latest,health=latest"
 export MAS_APP_SETTINGS_DEMODATA=true
 export MAS_APP_SETTINGS_PERSISTENT_VOLUMES_FLAG=true
-#export MAS_APP_SETTINGS_SERVER_BUNDLES_SIZE=jms
+export MAS_APP_SETTINGS_SERVER_BUNDLES_SIZE=jms
+export DB2_MEMORY_REQUESTS=18Gi
+export DB2_MEMORY_LIMITS=19Gi
 #export MAS_APP_SETTINGS_SECONDARY_LANGS='FR,IT,DE,ZH-TW'
-ansible-playbook ibm.mas_devops.oneclick_add_manage.yml
 set +e
 export DB2_INSTANCE_NAME=db2w-shared
 ### Add PVC and BIM - post-deploy config for Manage
@@ -66,7 +67,7 @@ cat <<\EOF > 3_iot.sh
 #!/usr/bin/bash
 ## To read env.sh file.
 source $(dirname $(realpath ${0}))/env.sh
-#export MAS_APP_CHANNEL=8.5.x
+#export MAS_APP_CHANNEL=8.6.x
 ansible-playbook ibm.mas_devops.oneclick_add_iot
 set -e
 oc project mas-masdemo-iot
@@ -76,7 +77,7 @@ cat <<\EOF > 4_monitor.sh
 #!/usr/bin/bash
 ## To read env.sh file.
 source $(dirname $(realpath ${0}))/env.sh
-#export MAS_APP_CHANNEL=8.8.x
+#export MAS_APP_CHANNEL=8.9.x
 ansible-playbook ibm.mas_devops.oneclick_add_monitor
 EOF
 chmod +x *.sh
