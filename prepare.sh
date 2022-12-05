@@ -57,6 +57,7 @@ export MAS_APP_SETTINGS_SERVER_BUNDLES_SIZE=jms
 export DB2_MEMORY_REQUESTS=18Gi
 export DB2_MEMORY_LIMITS=19Gi
 #export MAS_APP_SETTINGS_SECONDARY_LANGS='FR,IT,DE,ZH-TW'
+ansible-playbook ibm.mas_devops.oneclick_add_manage.yml
 set +e
 export DB2_INSTANCE_NAME=db2w-shared
 ### Add PVC and BIM - post-deploy config for Manage
