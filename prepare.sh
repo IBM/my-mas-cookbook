@@ -27,7 +27,7 @@ export SLS_MONGODB_CFG_FILE=/scripts
 export MAS_INSTANCE_ID=masdemo
 export MAS_WORKSPACE_ID=masdev
 export SLS_DOMAIN=svc.cluster.local
-export SLS_LICENSE_FILE=/scripts/entitlement.lic
+export SLS_LICENSE_FILE=/scripts/license.dat
 EOF
 cat <<\EOF > 1_core.sh
 #!/usr/bin/bash
@@ -35,10 +35,16 @@ cat <<\EOF > 1_core.sh
 source $(dirname $(realpath ${0}))/env.sh
 set -e
 ## Check.
-if [ -z "$IBM_ENTITLEMENT_KEY" ]; then echo "IBM container software's entitlement key must be defined."; fi
+if [[ -z "$IBM_ENTITLEMENT_KEY" ]] ; then
+  echo "IBM container software's entitlement key must be defined."
+  exit
+fi
 ## Check.
-FILE=/scripts/entitlement.lic
-if [ ! -f "$FILE" ]; then echo "Place AppPoint License file as entitlement.lic."; fi
+FILE=/scripts/license.dat
+if [[ ! -f "$FILE" ]] ; then
+  echo "Place the AppPoint License file."
+  exit
+fi
 set +e
 export OCP_INGRESS=$(oc get ingress.config cluster -o jsonpath='{.spec.domain}')
 ansible-playbook ibm.mas_devops.oneclick_core
