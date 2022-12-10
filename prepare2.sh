@@ -54,12 +54,12 @@ cat <<\EOF > 1_separate_iot.sh
 ## To read env.sh file.
 source $(dirname $(realpath ${0}))/env.sh
 set -e
+export DB2_DEDICATED_NODE=
 ## Check.
 if [[ -z "$DB2_DEDICATED_NODE" ]] ; then
   echo "Provide the private 10. IP address of the dedicated node."
   exit
 fi
-export DB2_DEDICATED_NODE=
 export DB2_INSTANCE_NAME=db2w-monitor
 export DB2_DBNAME=BLUDB
 export DB2_CPU_REQUESTS=8000m
@@ -88,6 +88,8 @@ cat <<\EOF > 3_separate_manage.sh
 ## To read env.sh file
 source $(dirname $(realpath ${0}))/env.sh
 ## Generate random password: openssl rand -base64 12
+export DB2_LDAP_PASSWORD=
+export DB2_DEDICATED_NODE=
 ## Check.
 if [[ -z "$DB2_LDAP_PASSWORD" ]] ; then
   echo "Generate and provide a password."
@@ -98,8 +100,6 @@ if [[ -z "$DB2_DEDICATED_NODE" ]] ; then
   echo "Provide the private 10. IP address of the dedicated node."
   exit
 fi
-export DB2_LDAP_PASSWORD=
-export DB2_DEDICATED_NODE=
 export DB2_INSTANCE_NAME=db2w-manage
 export DB2_DBNAME=BLUDB
 export DB2_LDAP_USERNAME=maximo
