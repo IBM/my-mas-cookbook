@@ -47,7 +47,7 @@ if [[ ! -f "$FILE" ]] ; then
 fi
 set +e
 export OCP_INGRESS=$(oc get ingress.config cluster -o jsonpath='{.spec.domain}')
-# export MAS_ANNOTATIONS=mas.ibm.com/operationalMode=nonproduction
+export MAS_ANNOTATIONS=mas.ibm.com/operationalMode=nonproduction
 ansible-playbook ibm.mas_devops.oneclick_core
 EOF
 cat <<\EOF > 1_separate_iot.sh
