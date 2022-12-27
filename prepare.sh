@@ -60,8 +60,8 @@ export MAS_APPWS_COMPONENTS="base=latest,health=latest"
 export MAS_APP_SETTINGS_DEMODATA=true
 export MAS_APP_SETTINGS_PERSISTENT_VOLUMES_FLAG=true
 export MAS_APP_SETTINGS_SERVER_BUNDLES_SIZE=jms
-export DB2_MEMORY_REQUESTS=18Gi
-export DB2_MEMORY_LIMITS=19Gi
+export DB2_MEMORY_REQUESTS=32Gi
+export DB2_MEMORY_LIMITS=34Gi
 #export MAS_APP_SETTINGS_SECONDARY_LANGS='FR,IT,DE,ZH-TW'
 ansible-playbook ibm.mas_devops.oneclick_add_manage.yml
 set +e
