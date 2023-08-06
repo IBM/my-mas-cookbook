@@ -3,4 +3,4 @@ deployment, cookbook steps for Maximo Application Suite.
 
 ## Hands-on lab for MAS sandbox [manage,iot,monitor]
 
-https://mam-hol.eu-gb.mybluemix.net/ocp_8.9/
+http://maximo-lab.monitordemo4.ibmmam.com/ocp_8.9/
